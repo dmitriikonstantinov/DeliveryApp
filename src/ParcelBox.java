@@ -14,14 +14,13 @@ public class ParcelBox<T extends Parcel> {
 
     // Метод добавления посылки в коробку
     public boolean addParcel(T parcel) {
-        if (currentWeight + parcel.getWeight() <= maxWeight) {
-            parcels.add(parcel);
-            currentWeight += parcel.getWeight();
-            return true;
-        } else {
+        if (currentWeight + parcel.getWeight() > maxWeight) {
             System.out.println("Внимание! Превышен максимальный вес коробки. Посылка не добавлена.");
             return false;
         }
+        parcels.add(parcel);
+        currentWeight += parcel.getWeight();
+        return true;
     }
 
     // Метод получения всех посылок из коробки
